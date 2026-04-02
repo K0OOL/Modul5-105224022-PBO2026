@@ -20,16 +20,12 @@ public class RekeningBank {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
     public void setor(double jumlah) {
-        saldo += jumlah;
-    }
-
-    public void tarik(double jumlah) {
-        saldo -= jumlah;
+        if (jumlah < 0) {
+            System.out.println("Jumlah tidak boleh negatif");
+        } else {
+            saldo += jumlah;
+        }
     }
 
     public void info() {
@@ -41,7 +37,6 @@ public class RekeningBank {
         RekeningBank rekening = new RekeningBank(123456789, 1000000);
         rekening.info();
         rekening.setor(500000);
-        rekening.tarik(200000);
         rekening.info();
     }
 

@@ -4,10 +4,12 @@ public class Barang {
     private String namaBarang;
     private int stok;
     private double hargaSatuan;
+    protected String kategori;
 
-    public Barang(String idBarang, String namaBarang) {
+    public Barang(String idBarang, String namaBarang, String kategori) {
         setIdBarang(idBarang);
         setNamaBarang(namaBarang);
+        setKategori(kategori);
         this.stok = 0;
         this.hargaSatuan = 0;
     }
@@ -40,6 +42,26 @@ public class Barang {
         }
     }
 
+    public void tambahStok(int jumlah) {
+        if (jumlah > 0) {
+            this.stok += jumlah;
+        } else {
+            System.out.println("Jumlah stok harus positif.");
+        }
+    }
+
+    public void kurangiStok(int jumlah) {
+        if (jumlah > 0) {
+            if (this.stok - jumlah >= 0) {
+                this.stok -= jumlah;
+            } else {
+                System.out.println("Stok tidak mencukupi.");
+            }
+        } else {
+            System.out.println("Jumlah stok harus positif.");
+        }
+    }
+
     public double getHargaSatuan() {
         return hargaSatuan;
     }
@@ -50,6 +72,22 @@ public class Barang {
         } else {
             this.hargaSatuan = newHargaSatuan;
         }
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public void tampilkanDetailBarang() {
+        System.out.println("\nID Barang\t: " + idBarang);
+        System.out.println("Nama Barang\t: " + namaBarang);
+        System.out.println("Kategori\t: " + kategori);
+        System.out.println("Stok\t\t: " + stok);
+        System.out.println("Harga Satuan\t: " + hargaSatuan + "\n");
     }
 
     public void tampilkanDataBarang() {

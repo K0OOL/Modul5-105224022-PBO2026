@@ -6,7 +6,7 @@ public class RekeningBank {
     public RekeningBank(String nomorRekening, double saldo) {
         this.nomorRekening = nomorRekening;
         this.saldo = 0;
-        setor(saldo);
+        setsaldo(saldo);
     }
 
     public String getNomorRekening() {
@@ -17,35 +17,17 @@ public class RekeningBank {
         return saldo;
     }
 
-    public void setor(double jumlah) {
-        if (jumlah < 0) {
-            System.out.println("Jumlah tidak boleh negatif");
+    public void setsaldo(double newSaldo) {
+        if (newSaldo < 0) {
+            System.out.println("saldo tidak boleh negatif.");
         } else {
-            saldo += jumlah;
-        }
-    }
-
-    public void tarik(double jumlah) {
-        if (jumlah < 0) {
-            System.out.println("Jumlah tidak boleh negatif");
-        } else if (jumlah > saldo) {
-            System.out.println("Saldo tidak cukup");
-        } else {
-            saldo -= jumlah;
+            System.out.println("oke.");
+            this.saldo += newSaldo;
         }
     }
 
     public void info() {
         System.out.println("Nomor Rekening: " + nomorRekening);
         System.out.println("Saldo: " + saldo);
-    }
-
-    public static void main(String[] args) {
-        RekeningBank rekening = new RekeningBank("123456789", 1000000);
-        rekening.info();
-        rekening.setor(500000);
-        rekening.info();
-        rekening.tarik(200000);
-        rekening.info();
     }
 }
